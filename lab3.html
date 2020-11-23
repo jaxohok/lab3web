@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>LAB3</title>
+    <style type="text/css">
+   h1 { 
+    font-size: 120%; 
+    font-family: Verdana, Arial, Helvetica, sans-serif; 
+    color: #00FFFF;
+   }
+
+  </style>
+  <link rel="stylesheet" href="lab2.css">
+ </head>
+ <body>
+
+  <script type="text/javascript">
+all_images = new Array (
+"https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg",
+"https://i.ytimg.com/vi/1Ne1hqOXKKI/maxresdefault.jpg",
+"https://images.theconversation.com/files/350865/original/file-20200803-24-50u91u.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=900.0&fit=crop",
+"https://c.files.bbci.co.uk/41CF/production/_109474861_angrycat-index-getty3-3.jpg");
+var ImgNum = 0;
+var ImgLength = all_images.length - 1;
+var delay = 2500;
+var lock = false;
+var run;
+
+function chgImg(direction) {
+ if (document.images) {
+  ImgNum = ImgNum + direction;
+  if (ImgNum > ImgLength) { ImgNum = 0; }
+  if (ImgNum < 0) { ImgNum = ImgLength; }
+  document.slide_show.src = all_images[ImgNum];
+ }
+}
+
+function auto() {
+ if (lock == true) {
+  lock = false;
+  window.clearInterval(run);
+ }
+ else if (lock == false) {
+  lock = true;
+  run = setInterval("chgImg(1)", delay);
+ }
+}
+</script>
+
+<table style="margin: 0 auto;">
+ <tr style="text-align: center;">
+  <td colspan="3"><img src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/cat_relaxing_on_patio_other/1800x1200_cat_relaxing_on_patio_other.jpg" name="slide_show"></td>
+ </tr>
+ <tr>
+  <td style="text-align: right;"><a href="javascript:chgImg(-1)">Предыдущая</a></td>
+  <td style="text-align: center;"><a href="javascript:auto()">Старт/Стоп</a></td>
+  <td style="text-align: left;"><a href="javascript:chgImg(1)">Следующая</a></td>
+ </tr>
+</table>
+
+<script type="text/javascript">
+ auto();
+</script>
+
+ </body>
+
+<script type="text/javascript">
+var currentTime = new Date().getHours();
+if (7 <= currentTime && currentTime < 20) {
+    if (document.body) {
+        document.body.background = "http://itsnotch.com/tumblr/images/daytime_bg.jpg";
+    }
+}
+else {
+    if (document.body) {
+        document.body.background = "http://itsnotch.com/tumblr/images/nighttime_bg.jpg";
+    }
+}
+
+</script>
+ 
+</html>
